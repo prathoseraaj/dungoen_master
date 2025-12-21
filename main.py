@@ -7,5 +7,8 @@ load_dotenv()
 gemini_api_key = os.getenv("gemini_api_key")
 genai.configure(api_key="gemini_api_key")
 
+model = genai.GenerativeModel("gemini-2.5-flash")
 
+
+    
     
