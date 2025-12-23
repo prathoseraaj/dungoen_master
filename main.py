@@ -21,7 +21,7 @@ initial_res = chat.send_message("Start the story in a rainy castle courtyard.")
 
 while True:
     
-    user_input = input()
+    user_input = input("You:")
     
     if user_input.lower() in ["quit","exit","bye"]:
         break
