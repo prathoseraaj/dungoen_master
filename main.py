@@ -23,7 +23,7 @@ model = genai.GenerativeModel(model_name = 'gemini-2.5-flash',
 chat = model.start_chat(history=[])
 initial_res = chat.send_message("Start the story in a rainy castle courtyard.")
 
-print(f"DM: {initial_res.text}\n")
+print(f"DM: {initial_res.text}\n")  
 
 while True:
     
