@@ -13,8 +13,11 @@ instructions = (
     "3. Use the dice roll provided in the prompt to narrate success (15-20) or failure (1-10)."
 )
 
-model = genai.GenerativeModel('gemini-2.5-flash')
-chat = model.start_chat()
+model = genai.GenerativeModel(model_name = 'gemini-2.5-flash', 
+                              instructions = instructions)
+
+chat = model.start_chat(history=[])
+initial_res = chat.send_message("Start the story in a rainy castle courtyard.")
 
 while True:
     
