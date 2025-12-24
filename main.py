@@ -43,3 +43,10 @@ while True:
     response = chat.send_message(game_action)
     
     print(response.text)
+    
+    if "YOU WIN" in response.text.upper():
+        print("Congratulations! You finished the game.")
+        break
+    elif "GAME OVER" in response.text.upper():
+        print("Better luck next time...")
+        break
