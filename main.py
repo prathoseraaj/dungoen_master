@@ -8,13 +8,17 @@ load_dotenv()
 gemini_api_key = os.getenv("gemini_api_key")
 genai.configure(api_key=gemini_api_key)
 
+
 instructions = (
-    "You are a Dungeon Master. Use only simple, basic English words. "
-    "Do not use difficult or poetic words. "
-    "2. Use common words that a beginner can understand. "
-    "3. End every turn with a simple question like 'What do you do?'. "
-    "4. Narrate success if the dice roll is 15-20 and failure if it is 1-10."
+    "You are a Dungeon Master. Use only simple English. "
+    "GOAL: The player must find a 'Golden Key' to escape the castle and WIN. "
+    "DANGER: If the player makes 3 big mistakes, they LOSE. "
+    "Rules: "
+    "1. If the player wins, you MUST say the exact words 'YOU WIN'. "
+    "2. If the player loses, you MUST say the exact words 'GAME OVER'. "
+    "3. Use the dice roll: 15-20 is great success, 1-10 is bad failure."
 )
+
 
 model = genai.GenerativeModel(model_name = 'gemini-2.5-flash', 
                               system_instruction = instructions)
