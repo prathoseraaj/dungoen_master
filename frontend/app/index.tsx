@@ -11,6 +11,7 @@ export default function App() {
         <Text className=" text-[#d4af35]/30">
           <MaterialIcons name="castle" size={60} />
         </Text>
+        <Text className="text-[#d4af35]/30 font-medium mt-3">CONNECTING TO THE NEURAL LINK...</Text>
       </View>
     </View>
   );
