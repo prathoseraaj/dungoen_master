@@ -5,7 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const Navbar = () => {
   return (
     <SafeAreaView>
-            <View className="items-center py-2">
+      <View className="items-center py-2">
         <Text className="text-[#b89525] text-lg font-extrabold tracking-widest">
           DUNGEON
         </Text>
