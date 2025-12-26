@@ -10,6 +10,7 @@ module.exports = {
         'jb-regular': ['JetBrainsMono-Regular'],
         'jb-bold': ['JetBrainsMono-Bold'],
       },
+      sans: ["System"],
     },
   },
   plugins: [],
