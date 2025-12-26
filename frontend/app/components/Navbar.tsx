@@ -5,11 +5,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const Navbar = () => {
   return (
     <SafeAreaView>
-          <View className="mt-5 items-center">
-      <Text className="text-white">Navbar</Text>
-    </View>
+      <View className=" items-center">
+        <Text className="text-white">Navbar</Text>
+      </View>
+      <View className="h-[1.5px] mt-5 bg-[#b89525]" />
     </SafeAreaView>
-
   );
 };
 
