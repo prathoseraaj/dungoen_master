@@ -1,6 +1,10 @@
 import "./global.css";
 import { Stack } from "expo-router";
-import { useFonts, JetBrainsMono_400Regular, JetBrainsMono_700Bold } from "@expo-google-fonts/jetbrains-mono";
+import {
+  useFonts,
+  JetBrainsMono_400Regular,
+  JetBrainsMono_700Bold,
+} from "@expo-google-fonts/jetbrains-mono";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -9,7 +13,7 @@ export default function RootLayout() {
   });
 
   if (!fontsLoaded) {
-    return null; 
+    return null;
   }
 
   return <Stack screenOptions={{ headerShown: false }} />;
