@@ -45,7 +45,38 @@ def start():
     })
 
 
+@app.route('/chat', methods=['POST'])
+def chat():
+    global chat_session
+        
+    if 'chat_session' not in globals():
+        return jsonify({"error": "Game not started"}), 400
+    
+    data = request.get_json()
+    user_input = data.get('message','')
+    
+    if not user_input:
+        return jsonify({"error": "No Message Provided"}), 400
 
+    roll = random.randint(1, 20)
+        
+    game_action = f"Player Action: {user_input}. Dice Roll result: {roll}"
+    response = chat_session.send_message(game_action)
+    
+    status = "playing"
+
+    if "YOU WIN" in response.text.upper():
+        status = "YOU WIN"
+    elif "GAME OVER" in response.text.upper():
+        status = "GAME OVER"
+ 
+    return jsonify({
+    "message": response.text,
+    "dice_roll": roll,
+    "game_status": status
+})
+
+    
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
 
