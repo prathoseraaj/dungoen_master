@@ -30,9 +30,22 @@ model = genai.GenerativeModel(model_name = 'gemini-2.5-flash',
 def home():
     return jsonify({"message": "API is running"})
 
+@app.route('/start')
+def start():
+    global chat_session
 
-
+    chat_session = model.start_chat(history=[])
+    init_message = chat_session.send_message(
+        "Start the story in a rainy castle courtyard."
+    )
     
+    return jsonify({
+        "story": init_message.text,
+        "game_status": "started"
+    })
+
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
 
