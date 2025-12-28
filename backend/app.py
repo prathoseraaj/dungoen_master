@@ -1,0 +1,52 @@
+import google.generativeai as genai
+import os 
+from dotenv import load_dotenv
+import random
+
+load_dotenv()
+
+gemini_api_key = os.getenv("gemini_api_key")
+genai.configure(api_key=gemini_api_key)
+
+
+instructions = (
+    "You are a Dungeon Master. Use only simple English. "
+    "GOAL: The player must find a 'Golden Key' to escape the castle and WIN. "
+    "DANGER: If the player makes 3 big mistakes, they LOSE. "
+    "Rules: "
+    "1. If the player wins, you MUST say the exact words 'YOU WIN'. "
+    "2. If the player loses, you MUST say the exact words 'GAME OVER'. "
+    "3. Use the dice roll: 15-20 is great success, 1-10 is bad failure."
+)
+
+
+model = genai.GenerativeModel(model_name = 'gemini-2.5-flash', 
+                              system_instruction = instructions)
+
+chat = model.start_chat(history=[])
+initial_res = chat.send_message("Start the story in a rainy castle courtyard.")
+
+print(f"DM: {initial_res.text}\n")  
+
+while True:
+    
+    user_input = input("You:")
+    
+    if user_input.lower() in ["quit","exit","bye"]:
+        break
+    
+    roll = random.randint(1,20)
+    print(f"System: You Rolled {roll}")
+    
+    game_action = f"Player Action: {user_input}. Dice Roll result: {roll}"
+    
+    response = chat.send_message(game_action)
+    
+    print(response.text)
+    
+    if "YOU WIN" in response.text.upper():
+        print("Congratulations! You finished the game.")
+        break
+    elif "GAME OVER" in response.text.upper():
+        print("Better luck next time...")
+        break
