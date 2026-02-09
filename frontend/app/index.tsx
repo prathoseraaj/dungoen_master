@@ -18,7 +18,7 @@ export default function App() {
   const scrollViewRef = useRef<ScrollView>(null);
 
   useEffect(() => {
-    fetch("http://172.20.10.2:5000/start")
+    fetch("http://172.20.203.85:5000/start")
       .then((res) => res.json())
       .then((data) => {
         setMessages([
@@ -46,7 +46,7 @@ export default function App() {
     setInputText("");
 
     try {
-      const response = await fetch("http://172.20.10.2:5000/chat", {
+      const response = await fetch("http://172.20.203.85:5000/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
